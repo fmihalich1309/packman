@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
+
 public class Dot : MonoBehaviour
 {
     [SerializeField] private float triggerRadius = 0.4f;
@@ -15,9 +16,25 @@ public class Dot : MonoBehaviour
 
     private void Awake()
     {
+        int randomcolor = Random.Range(1, 3);
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         dotCollider = GetComponent<Collider2D>();
-        originalColor = spriteRenderer.color;
+
+        bool TheDotIsYellow;
+
+        if (randomcolor == 1)
+        {
+            spriteRenderer.color = Color.yellow;
+            TheDotIsYellow = true;
+        }
+
+        else if (randomcolor == 2)
+        {
+            spriteRenderer.color = Color.blue;
+            TheDotIsYellow = false;
+        }
+            originalColor = spriteRenderer.color;
 
         if (dotCollider is CircleCollider2D circleCollider)
         {

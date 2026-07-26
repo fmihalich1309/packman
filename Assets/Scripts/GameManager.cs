@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
             heart.color = HeartFull;
         }
 
-        ScoreManager.Instance.ResetDots();
+        ScoreManager2p.Instance.ResetDots();
         ResetPositions();
     }
 

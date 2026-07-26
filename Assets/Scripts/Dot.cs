@@ -13,28 +13,30 @@ public class Dot : MonoBehaviour
     private Collider2D dotCollider;
     private Color originalColor;
     private bool eaten;
+    public int randomNumber;
+    public int points;
 
-    private void Awake()
+    public void Awake()
     {
-        int randomcolor = Random.Range(1, 3);
-
         spriteRenderer = GetComponent<SpriteRenderer>();
         dotCollider = GetComponent<Collider2D>();
 
-        bool TheDotIsYellow;
+        randomNumber = Random.Range(1, 3);
 
-        if (randomcolor == 1)
+        if (randomNumber == 1)
         {
             spriteRenderer.color = Color.yellow;
-            TheDotIsYellow = true;
+            points = 3;
         }
 
-        else if (randomcolor == 2)
+        else if (randomNumber == 2)
         {
             spriteRenderer.color = Color.blue;
-            TheDotIsYellow = false;
+            points = 2;
+
         }
-            originalColor = spriteRenderer.color;
+        
+        originalColor = spriteRenderer.color;
 
         if (dotCollider is CircleCollider2D circleCollider)
         {
@@ -49,7 +51,17 @@ public class Dot : MonoBehaviour
         eaten = true;
         spriteRenderer.color = EatenColor;
         dotCollider.enabled = false;
-        ScoreManager.Instance.AddScore();
+
+        Debug.Log(randomNumber);
+
+        if (randomNumber == 1)
+        {
+            ScoreManager3p.Instance.AddScore();
+        }
+        else
+        {
+            ScoreManager2p.Instance.AddScore();
+        }
     }
 
     public void ResetDot()

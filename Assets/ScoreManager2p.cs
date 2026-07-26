@@ -1,9 +1,10 @@
-using TMPro;
+﻿using TMPro;
+
 using UnityEngine;
 
-public class ScoreManager3p : MonoBehaviour
+public class ScoreManager2p : MonoBehaviour
 {
-    public static ScoreManager3p Instance { get; private set; }
+    public static ScoreManager2p Instance { get; private set; }
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private GameObject winScreen;
@@ -23,18 +24,18 @@ public class ScoreManager3p : MonoBehaviour
         if (winScreen != null) winScreen.SetActive(false);
     }
 
-    public void AddScore()
+    public void AddScore  ()
     {
         score++;
 
         UpdateScoreText();
 
-            if (score >= dots.Length)
-            {
-                WinGame();
-            }
+        if (score >= dots.Length)
+        {
+            WinGame();
+        }
 
-        
+
     }
 
     public void ResetDots()
@@ -56,6 +57,7 @@ public class ScoreManager3p : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        if (scoreText != null) scoreText.text = $"ЖОВТИХ: {score}";
+        if (scoreText != null) scoreText.text = $"СИНІХ: {score}";
     }
+
 }

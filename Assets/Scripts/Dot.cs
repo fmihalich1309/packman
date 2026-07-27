@@ -52,8 +52,6 @@ public class Dot : MonoBehaviour
         spriteRenderer.color = EatenColor;
         dotCollider.enabled = false;
 
-        Debug.Log(randomNumber);
-
         if (randomNumber == 1)
         {
             ScoreManager3p.Instance.AddScore();

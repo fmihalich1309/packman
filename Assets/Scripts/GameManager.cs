@@ -39,11 +39,14 @@ public class GameManager : MonoBehaviour
         }
 
         hearts = StartingHearts;
+        Debug.Log("Start GameManager, gameOverScreen = " + gameOverScreen);
         if (gameOverScreen != null) gameOverScreen.SetActive(false);
     }
 
     public void TakeDamage()
     {
+        Debug.Log("TakeDamage, hearts=" + hearts);
+
         if (hearts <= 0) return;
 
         hearts--;
@@ -55,6 +58,8 @@ public class GameManager : MonoBehaviour
 
         if (hearts <= 0)
         {
+            Debug.Log("starting GameOverRoutine");
+
             StartCoroutine(GameOverRoutine());
         }
         else
@@ -65,6 +70,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameOverRoutine()
     {
+        Debug.Log("routine started, gameOverScreen = " + gameOverScreen);
+
+        FreezeGame();
+
         if (gameOverScreen != null) gameOverScreen.SetActive(true);
         yield return new WaitForSeconds(gameOverDuration);
         if (gameOverScreen != null) gameOverScreen.SetActive(false);
@@ -80,6 +89,7 @@ public class GameManager : MonoBehaviour
         }
 
         ScoreManager2p.Instance.ResetDots();
+        ScoreManager3p.Instance.ResetDots();
         ResetPositions();
     }
 

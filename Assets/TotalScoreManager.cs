@@ -2,9 +2,9 @@
 
 using UnityEngine;
 
-public class ScoreManager2p : MonoBehaviour
+public class TotalScoreManager : MonoBehaviour
 {
-    public static ScoreManager2p Instance { get; private set; }
+    public static TotalScoreManager Instance { get; private set; }
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private GameObject winScreen;
@@ -24,11 +24,18 @@ public class ScoreManager2p : MonoBehaviour
         if (winScreen != null) winScreen.SetActive(false);
     }
 
-    public void AddScore  ()
+    public void AddScore()
     {
         score++;
 
         UpdateScoreText();
+
+        if (score >= dots.Length)
+        {
+            WinGame();
+        }
+
+
     }
 
     public void ResetDots()
@@ -50,7 +57,7 @@ public class ScoreManager2p : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        if (scoreText != null) scoreText.text = $"СИНІХ: {score}";
+        if (scoreText != null) scoreText.text = $"ВСЬОГО: {score}";
     }
 
 }

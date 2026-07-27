@@ -72,8 +72,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("routine started, gameOverScreen = " + gameOverScreen);
 
-        FreezeGame();
-
         if (gameOverScreen != null) gameOverScreen.SetActive(true);
         yield return new WaitForSeconds(gameOverDuration);
         if (gameOverScreen != null) gameOverScreen.SetActive(false);

@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
         ScoreManager2p.Instance.ResetDots();
         ScoreManager3p.Instance.ResetDots();
+        TotalScoreManager.Instance.ResetDots();
         ResetPositions();
     }
 

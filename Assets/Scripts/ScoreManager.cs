@@ -28,13 +28,6 @@ public class ScoreManager3p : MonoBehaviour
         score++;
 
         UpdateScoreText();
-
-            if (score >= dots.Length)
-            {
-                WinGame();
-            }
-
-        
     }
 
     public void ResetDots()
